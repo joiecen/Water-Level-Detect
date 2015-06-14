@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
 	private TextView watertwoTextView;
 	private View watertwoView;
     private Button startdetectButton;
+    private int waterlevel;
 	
 	private Messenger toserviceMessenger;
 	private Messenger fromserviceMessenger;
@@ -81,15 +82,19 @@ public class MainActivity extends Activity {
 			switch (msg.what) {
 			case BLEService.MSG_SET_VALUE:
 				//更新UI操作
-//				testTextView.setText("receive from service"+msg.arg1);
+				//testTextView.setText("receive from service"+msg.arg1);
+				if(msg.what == 6){
+					waterlevel = 100;
+				}
+				//分析数据到具体的ml
 				wateroneView.setBackgroundColor(Color.parseColor("#b487CEFA"));
 				wateroneView.setLayoutParams(new LinearLayout.LayoutParams(10*msg.arg1, 100));         
 				LinearLayout.LayoutParams wonelp = new LinearLayout.LayoutParams(wateroneView.getLayoutParams());
 				wonelp.setMargins(50, 0, 0, 0);
 				wateroneView.setLayoutParams(wonelp);
-
+				//第二个进度条
 				watertwoView.setBackgroundColor(Color.parseColor("#b487CEFA"));
-				watertwoView.setLayoutParams(new LinearLayout.LayoutParams(10*msg.arg2, 100));
+				watertwoView.setLayoutParams(new LinearLayout.LayoutParams(10*msg.arg1, 100));
 				LinearLayout.LayoutParams wtwolp = new LinearLayout.LayoutParams(watertwoView.getLayoutParams());
 				wtwolp.setMargins(50, 0, 0, 0);
 				watertwoView.setLayoutParams(wtwolp);
