@@ -1,0 +1,283 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#F0FFFF"
+    tools:context="com.example.waterleveldetect.TotalLIDActivity" >
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+            
+             <TextView
+            android:id="@+id/lidshuliangtextview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LID数量：" 
+            android:textSize="18dp"/>
+
+             <TextView
+                 android:id="@+id/lidnumtext"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="3" 
+                 android:textSize="18dp"/>
+
+        </LinearLayout>
+		<LinearLayout
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:layout_below="@+id/linearLayout1" 
+	        android:orientation="horizontal">
+
+			<TextView
+			    android:id="@+id/textView1"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"
+			    android:text="总容量：" 
+			    android:textSize="18dp"/>
+
+			<TextView
+			    android:id="@+id/textView2"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_weight="1"			    
+			    android:text="600m³" 
+			    android:textSize="18dp"/>
+
+			<TextView
+			    android:id="@+id/textView3"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="10dp"			    
+			    android:layout_weight="1"			    
+			    android:text="储水量：" 
+			    android:textSize="18dp"/>
+
+			<TextView
+			    android:id="@+id/textView4"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"			    
+			    android:layout_weight="1"			    
+			    android:text="345m³" 
+			    android:textSize="18dp"/>
+
+	    </LinearLayout>       
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="350dp"
+        android:layout_below="@+id/linearLayout1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" 
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"            
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LID1" 
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="容量：200m³" 
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/textView7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水量：100m³" 
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/textView17"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="流量：20m³/h" 
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水质：良" 
+                android:textSize="15dp"/>
+
+            <RelativeLayout
+                android:layout_width="51dp"
+                android:layout_height="fill_parent" 
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/waterborder">
+                <ImageView
+		        android:id="@+id/imageView1"
+		        android:layout_width="50dp"
+		        android:layout_height="100dp"
+		        android:scaleType="centerCrop"
+		        android:layout_centerHorizontal="true"
+		        android:layout_alignParentBottom="true"
+		        android:src="@drawable/lidwater1" />
+            </RelativeLayout>
+
+            
+        </LinearLayout>
+
+        <View 
+            android:layout_width="1dp"
+            android:layout_height="110dp"
+            android:background="#000080"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LID2" 
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/textView10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="容量：200m³" 
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/textView11"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水量：195m³" 
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="流量：15m³/h" 
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水质：优" 
+                android:textSize="15dp"/>
+
+            <RelativeLayout
+                android:layout_width="51dp"
+                android:layout_height="fill_parent" 
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/waterborder">
+                <ImageView
+		        android:id="@+id/imageView2"
+		        android:layout_width="50dp"
+		        android:layout_height="200dp"
+		        android:scaleType="centerCrop"
+		        android:layout_centerHorizontal="true"
+		        android:layout_alignParentBottom="true"
+		        android:src="@drawable/lidwater2" />
+            </RelativeLayout>
+        </LinearLayout>
+        
+        <View 
+            android:layout_width="1dp"
+            android:layout_height="110dp"
+            android:background="#000080"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="LID3" 
+                android:textSize="18dp"/>
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="容量：200m³" 
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水量：50m³" 
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="流量：30m³/h" 
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="水质：良" 
+                android:textSize="15dp"/>
+
+            <RelativeLayout
+                android:layout_width="51dp"
+                android:layout_height="fill_parent" 
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/waterborder">
+                <ImageView
+		        android:id="@+id/imageView3"
+		        android:layout_width="50dp"
+		        android:layout_height="50dp"
+		        android:scaleType="centerCrop"
+		        android:layout_centerHorizontal="true"
+		        android:layout_alignParentBottom="true"
+		        android:src="@drawable/lidwater3" />
+            </RelativeLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

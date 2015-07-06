@@ -1,12 +1,24 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.waterleveldetect.MainActivity" >
 
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
-        app:showAsAction="never"/>
+        android:showAsAction="always"
+        android:title="切换城市"       >
+        <menu >
+            <item 
+                android:id="@+id/menu_mapone"
+                android:title="北京"
+                />
+            <item 
+                android:id="@+id/menu_maptwo"
+                android:title="上海"/>
+            <item 
+                android:id="@+id/menu_mapthree"
+                android:title="厦门"/>
+        </menu>
+    </item>
 
 </menu>

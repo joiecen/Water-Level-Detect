@@ -1,0 +1,171 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F0FFFF"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.example.waterleveldetect.OneLIDActivity" >
+
+ <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="30dp"
+        android:background="#7fB0C4DE"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/lidname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:text="LID 1"
+                android:textColor="#000080"
+                android:textSize="25dp" />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/buttonbackground"
+                android:clickable="true"
+                android:text="开始检测"
+                android:textColor="#000080"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+
+			<TextView 
+			    android:id="@+id/nowwaterleveltext"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="当前水量："
+			    android:textSize="18dp"/>
+
+			<TextView
+			    android:id="@+id/nowwaterlevelnum"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="30m³" 
+			    android:textSize="18dp"/>
+        </LinearLayout>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.22dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff" />
+        <LinearLayout 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"   >
+            <TextView 
+			    android:id="@+id/volumetext"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="总容量："
+			    android:textSize="18dp"/>
+
+			<TextView
+			    android:id="@+id/volumenum"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="200m³" 
+			    android:textSize="18dp"/>
+        </LinearLayout>
+			
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="0.22dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+			<TextView 
+			    android:id="@+id/nowwaterratio"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="当前水量百分比："
+			    android:textSize="18dp"/>
+
+			<TextView
+			    android:id="@+id/nowwaterrationum"
+			    android:layout_width="50dp"
+			    android:layout_height="wrap_content"
+			    android:text="15%" 
+			    android:textSize="18dp"/>           
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.22dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp" >
+			<TextView 
+			    android:id="@+id/nowwaterspeed"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="当前流速："
+			    android:textSize="18dp"/>
+
+			<TextView
+			    android:id="@+id/nowwaterspeednum"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:text="0m³/s"
+			    android:textSize="18dp" />           
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.22dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#ffffff" />
+    </LinearLayout>
+         
+      	<com.example.waterleveldetect.WaterView 
+	    android:id="@+id/waterview1"
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:layout_below="@id/linearLayout1"
+	    android:layout_marginTop="50dp"
+	    android:layout_centerHorizontal="true"
+	    />  
+
+</RelativeLayout>

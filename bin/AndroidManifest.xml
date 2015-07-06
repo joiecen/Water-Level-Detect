@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="8"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
@@ -29,8 +29,18 @@
             android:name=".BleService"
             android:label="@string/title_activity_ble_service" >
         </activity>
-        
-        <service android:name="com.example.waterleveldetect.BLEService"></service>
+
+        <service android:name=".BLEService" >
+        </service>
+
+        <activity
+            android:name=".OneLIDActivity"
+            android:label="@string/title_activity_one_lid" >
+        </activity>
+        <activity
+            android:name=".TotalLIDActivity"
+            android:label="@string/title_activity_total_lid" >
+        </activity>
     </application>
 
 </manifest>
