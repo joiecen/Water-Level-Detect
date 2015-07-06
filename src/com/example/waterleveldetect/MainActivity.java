@@ -41,7 +41,7 @@ public class MainActivity extends Activity {
 	private final static String BJ = "±±æ©";
 	private final static String XM = "œ√√≈";
 	private String lidnum;
-	//
+	/////
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
