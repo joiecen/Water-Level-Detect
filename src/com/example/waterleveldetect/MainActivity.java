@@ -90,19 +90,19 @@ public class MainActivity extends Activity {
 		}
 		if(title.equals(BJ)){
 			findViewById(R.id.mainlayout).setBackground(getResources().getDrawable(R.drawable.beijingmap));
-			lid1.setX(90);
-			lid1.setY(550);
+			lid1.setX(110);
+			lid1.setY(560);
 			lid2.setX(650);
-			lid2.setY(600);
-			lid3.setX(250);
-			lid3.setY(1100);
+			lid2.setY(615);
+			lid3.setX(260);
+			lid3.setY(1090);
 		}
 		if(title.equals(XM)){
 			findViewById(R.id.mainlayout).setBackground(getResources().getDrawable(R.drawable.xiamenmap));
 			lid1.setX(350);
 			lid1.setY(450);
 			lid2.setX(750);
-			lid2.setY(250);
+			lid2.setY(240);
 			lid3.setX(450);
 			lid3.setY(1200);
 		}

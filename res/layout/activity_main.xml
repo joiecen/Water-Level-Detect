@@ -8,14 +8,14 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.waterleveldetect.MainActivity"  
-    android:background="@drawable/shanghaimap">
+    android:background="@drawable/beijingmap">
 
     <ImageView
         android:id="@+id/lid1"
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="170dp"
         android:src="@drawable/lidone" />
 
     <ImageView
@@ -23,9 +23,9 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/lid1"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="-20dp"
         android:layout_alignLeft="@id/lid1"
-        android:layout_marginLeft="210dp"
+        android:layout_marginLeft="180dp"
         android:src="@drawable/lidtwo" />
 
     <ImageView
@@ -33,9 +33,9 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/lid2"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="120dp"
         android:layout_toRightOf="@+id/lid1"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="-20dp"
         android:src="@drawable/lidthree" />
 
     <Button
