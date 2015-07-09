@@ -43,7 +43,7 @@ public class WaterView extends View{
 
 	public boolean setviewparam(int height){
 		this.height = height;
-		System.out.println(height);
+//		System.out.println(height);
 		waterBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.lidwater);
 		Bitmap bitmap = Bitmap.createBitmap(waterBitmap.getWidth()/2, waterBitmap.getHeight()/2, Config.ARGB_8888)  ;  
 		Canvas canvas = new Canvas(bitmap);

@@ -7,12 +7,12 @@ import android.annotation.SuppressLint;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
-//import android.bluetooth.BluetoothGatt;
-//import android.bluetooth.BluetoothGattCallback;
-//import android.bluetooth.BluetoothGattCharacteristic;
-//import android.bluetooth.BluetoothGattDescriptor;
-//import android.bluetooth.BluetoothGattService;
-//import android.bluetooth.BluetoothManager;
+import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCallback;
+import android.bluetooth.BluetoothGattCharacteristic;
+import android.bluetooth.BluetoothGattDescriptor;
+import android.bluetooth.BluetoothGattService;
+import android.bluetooth.BluetoothManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Handler;
@@ -28,16 +28,15 @@ public class BLEService extends Service{
 
 	static final int MSG_SET_VALUE = 3;
     private final static String TAG = BLEService.class.getSimpleName();
-//	private BluetoothManager mBluetoothManager;
+	private BluetoothManager mBluetoothManager;
 	private BluetoothAdapter mBluetoothAdapter;
-//	private BluetoothGatt mBluetoothGatt;
+	private BluetoothGatt mBluetoothGatt;
 	private static final UUID WL_SERVICE_UUID = UUID.fromString("0000fff0-0000-1000-8000-00805f9b34fb");
 	private static final UUID WL_CHARACTERISTIC_UUID = UUID.fromString("0000fff4-0000-1000-8000-00805f9b34fb");
 	private static final UUID CLIENT_CHARACTERISTIC_CONFIG = UUID.fromString("00002902-0000-1000-8000-00805f9b34fb");
-	private String mac = "78:A5:04:50:32:8C";
+	private String mac = "78:A5:04:7A:4E:4F";
 	private byte[] characteristicgetvalue;
 	private int waterlevel = 100;
-
 	
 	private Messenger cMessenger;
 	private Handler mhandler = new Handler(){
@@ -48,10 +47,9 @@ public class BLEService extends Service{
 				Message message = Message.obtain(null,BLEService.MSG_SET_VALUE);
 				message.arg1 = 0;                           
 				cMessenger = msg.replyTo;
-				
 				if(BluetoothAdapter.checkBluetoothAddress(mac)){
-//					BluetoothDevice bluetoothDevice = mBluetoothAdapter.getRemoteDevice(mac);
-//					bluetoothDevice.connectGatt(getApplicationContext(), false, mGattCallback);
+					BluetoothDevice bluetoothDevice = mBluetoothAdapter.getRemoteDevice(mac);
+					bluetoothDevice.connectGatt(getApplicationContext(), false, mGattCallback);
 				}else {
 					Toast.makeText(getApplicationContext(), "蓝牙不可用", Toast.LENGTH_SHORT).show();
 				}				
@@ -66,8 +64,8 @@ public class BLEService extends Service{
 	@Override
     public void onCreate() {
 		super.onCreate();
-//		mBluetoothManager = (BluetoothManager)getSystemService(Context.BLUETOOTH_SERVICE);
-//        mBluetoothAdapter = mBluetoothManager.getAdapter();
+		mBluetoothManager = (BluetoothManager)getSystemService(Context.BLUETOOTH_SERVICE);
+        mBluetoothAdapter = mBluetoothManager.getAdapter();
 	};
 	
 	@Override
@@ -105,79 +103,80 @@ public class BLEService extends Service{
 		return servicemessenger.getBinder();
 	}
 	
-//	public boolean initialize() {
-//        // For API level 18 and above, get a reference to BluetoothAdapter through
-//        // BluetoothManager.
-//        if (mBluetoothManager == null) {
-//            mBluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
-//            if (mBluetoothManager == null) {
-//                Log.e(TAG, "Unable to initialize BluetoothManager.");
-//                return false;
-//            }
-//        } 
-//        mBluetoothAdapter = mBluetoothManager.getAdapter();
-//        if (mBluetoothAdapter == null) {
-//            Log.e(TAG, "Unable to obtain a BluetoothAdapter.");
-//            return false;
-//        } 
-//        return true;
-//    }
+	public boolean initialize() {
+        // For API level 18 and above, get a reference to BluetoothAdapter through
+        // BluetoothManager.
+        if (mBluetoothManager == null) {
+            mBluetoothManager = (BluetoothManager) getSystemService(Context.BLUETOOTH_SERVICE);
+            if (mBluetoothManager == null) {
+                Log.e(TAG, "Unable to initialize BluetoothManager.");
+                return false;
+            }
+        } 
+        mBluetoothAdapter = mBluetoothManager.getAdapter();
+        if (mBluetoothAdapter == null) {
+            Log.e(TAG, "Unable to obtain a BluetoothAdapter.");
+            return false;
+        } 
+        return true;
+    }
 	
-//	private BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
-//		@Override
-//		public void onServicesDiscovered(BluetoothGatt gatt, int status) {
-//			// TODO Auto-generated method stub
-//			super.onServicesDiscovered(gatt, status);
-//			if(status == BluetoothGatt.GATT_SUCCESS){
-//				System.out.println("onservicediscovered status is "+status);    //status = 0 success
-//				BluetoothGattService service = gatt.getService(WL_SERVICE_UUID);
-//				BluetoothGattCharacteristic blegattchara = service.getCharacteristic(WL_CHARACTERISTIC_UUID);
-//				gatt.readCharacteristic(blegattchara);
-//				System.out.println("getcharacteristic is value is "+blegattchara.getValue());
-//
-//				//要先完成writedescriptor 等待一段时间 再read？
-////				gatt.setCharacteristicNotification(blegattchara, true);
-////				BluetoothGattDescriptor descriptor = blegattchara.getDescriptor(CLIENT_CHARACTERISTIC_CONFIG);
-////				descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
-////				gatt.writeDescriptor(descriptor);
-//			}else{
-//				gatt.disconnect();
-//				gatt.close();
-//			}
-//		}
-//
-//		@Override
-//		public void onConnectionStateChange(BluetoothGatt gatt, int status,
-//				int newState) {
-//			// TODO Auto-generated method stub
-//			super.onConnectionStateChange(gatt, status, newState);
-//			if(status == BluetoothGatt.GATT_SUCCESS){
-//				gatt.discoverServices();
-//			}else{
-//				gatt.disconnect();
-//				gatt.close();
-//			}
-//		}
-//		
-//		@Override
-//		public void onCharacteristicRead(BluetoothGatt gatt,
-//				BluetoothGattCharacteristic characteristic, int status) {
-//			// TODO Auto-generated method stub
-//			super.onCharacteristicRead(gatt, characteristic, status);
+	private BluetoothGattCallback mGattCallback = new BluetoothGattCallback() {
+		@Override
+		public void onServicesDiscovered(BluetoothGatt gatt, int status) {
+			// TODO Auto-generated method stub
+			super.onServicesDiscovered(gatt, status);
+			if(status == BluetoothGatt.GATT_SUCCESS){
+				System.out.println("onservicediscovered status is "+status);    //status = 0 success
+				BluetoothGattService service = gatt.getService(WL_SERVICE_UUID);
+				BluetoothGattCharacteristic blegattchara = service.getCharacteristic(WL_CHARACTERISTIC_UUID);
+				gatt.readCharacteristic(blegattchara);
+				System.out.println("getcharacteristic is value is "+blegattchara.getValue());
+
+				//要先完成writedescriptor 等待一段时间 再read？
+				gatt.setCharacteristicNotification(blegattchara, true);
+				BluetoothGattDescriptor descriptor = blegattchara.getDescriptor(CLIENT_CHARACTERISTIC_CONFIG);
+				descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
+				gatt.writeDescriptor(descriptor);
+			}else{
+				gatt.disconnect();
+				gatt.close();
+			}
+		}
+
+		@Override
+		public void onConnectionStateChange(BluetoothGatt gatt, int status,
+				int newState) {
+			// TODO Auto-generated method stub
+			super.onConnectionStateChange(gatt, status, newState);
+			if(status == BluetoothGatt.GATT_SUCCESS){
+				gatt.discoverServices();
+			}else{
+				gatt.disconnect();
+				gatt.close();
+			}
+		}
+		
+		@Override
+		public void onCharacteristicRead(BluetoothGatt gatt,
+				BluetoothGattCharacteristic characteristic, int status) {
+			// TODO Auto-generated method stub
+			super.onCharacteristicRead(gatt, characteristic, status);
 //			characteristicgetvalue = characteristic.getValue();
 //			System.out.println("characteristicgetvalue is "+characteristicgetvalue);
 //			waterlevel = (int)characteristicgetvalue[1]; 
 //			System.out.println("waterlevel is "+waterlevel);//?
-//		}
-//
-//		@Override
-//		public void onCharacteristicChanged(BluetoothGatt gatt,
-//				BluetoothGattCharacteristic characteristic) {
-//			// TODO Auto-generated method stub
-//			super.onCharacteristicChanged(gatt, characteristic);
-//			gatt.readCharacteristic(characteristic);
-//		}	
-//		
-//	};
+		}
+
+		@Override
+		public void onCharacteristicChanged(BluetoothGatt gatt,
+				BluetoothGattCharacteristic characteristic) {
+			// TODO Auto-generated method stub
+			super.onCharacteristicChanged(gatt, characteristic);
+			characteristicgetvalue = characteristic.getValue();
+			System.out.println("charavalue is "+characteristicgetvalue);
+		}	
+		
+	};
 
 }
