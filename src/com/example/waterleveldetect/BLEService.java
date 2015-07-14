@@ -1,5 +1,6 @@
 package com.example.waterleveldetect;
 
+import java.nio.CharBuffer;
 import java.util.UUID;
 
 import android.R.integer;
@@ -133,7 +134,6 @@ public class BLEService extends Service{
 				gatt.readCharacteristic(blegattchara);
 				System.out.println("getcharacteristic is value is "+blegattchara.getValue());
 
-				//要先完成writedescriptor 等待一段时间 再read？
 				gatt.setCharacteristicNotification(blegattchara, true);
 				BluetoothGattDescriptor descriptor = blegattchara.getDescriptor(CLIENT_CHARACTERISTIC_CONFIG);
 				descriptor.setValue(BluetoothGattDescriptor.ENABLE_NOTIFICATION_VALUE);
@@ -162,10 +162,7 @@ public class BLEService extends Service{
 				BluetoothGattCharacteristic characteristic, int status) {
 			// TODO Auto-generated method stub
 			super.onCharacteristicRead(gatt, characteristic, status);
-//			characteristicgetvalue = characteristic.getValue();
-//			System.out.println("characteristicgetvalue is "+characteristicgetvalue);
-//			waterlevel = (int)characteristicgetvalue[1]; 
-//			System.out.println("waterlevel is "+waterlevel);//?
+
 		}
 
 		@Override
@@ -174,7 +171,24 @@ public class BLEService extends Service{
 			// TODO Auto-generated method stub
 			super.onCharacteristicChanged(gatt, characteristic);
 			characteristicgetvalue = characteristic.getValue();
-			System.out.println("charavalue is "+characteristicgetvalue);
+			StringBuffer buffer=new StringBuffer();
+			switch (characteristicgetvalue.length) {
+			case 13:
+				for (int i = 8; i < characteristicgetvalue.length; i++) {
+					byte b = characteristicgetvalue[i];
+					buffer.append((char)b);
+				}
+				String getdata = buffer.toString();
+				System.out.println("getdata is : "+getdata);
+				break;
+			case 2:
+				break;
+			case 1:
+				break;
+			default:
+				break;
+			}
+
 		}	
 		
 	};
