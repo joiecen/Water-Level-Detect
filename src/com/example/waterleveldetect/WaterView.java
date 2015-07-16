@@ -33,8 +33,7 @@ public class WaterView extends View{
 		rectpaint.setStyle(Paint.Style.STROKE);
 		rectpaint.setStrokeWidth(5);
 		rectpaint.setColor(0xff000080);
-		canvas.drawRect(new RectF(200,0,800,600), rectpaint);
-		
+		canvas.drawRect(new RectF(200,0,800,600), rectpaint);		
 		Rect rect = new Rect(200, 800-height, 800, 800);
 		Rect rect2 = new Rect(200,600-height,800,600);
 		canvas.drawBitmap(waterBitmap , rect, rect2, null);
@@ -43,7 +42,6 @@ public class WaterView extends View{
 
 	public boolean setviewparam(int height){
 		this.height = height;
-//		System.out.println(height);
 		waterBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.lidwater);
 		Bitmap bitmap = Bitmap.createBitmap(waterBitmap.getWidth()/2, waterBitmap.getHeight()/2, Config.ARGB_8888)  ;  
 		Canvas canvas = new Canvas(bitmap);

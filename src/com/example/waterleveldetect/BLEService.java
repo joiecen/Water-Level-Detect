@@ -38,6 +38,7 @@ public class BLEService extends Service{
 	private String mac = "78:A5:04:7A:4E:4F";
 	private byte[] characteristicgetvalue;
 	private int waterlevel = 100;
+	private double getfromble = 100.0;
 	
 	private Messenger cMessenger;
 	private Handler mhandler = new Handler(){
@@ -81,11 +82,10 @@ public class BLEService extends Service{
 					while(i<=195){
 						Message message = Message.obtain(null,BLEService.MSG_SET_VALUE);
 						Thread.sleep(200);
-//						if(waterlevel == 100){
-//							System.out.println("waterlevel still 100");
-//						}else {
-//							message.arg1 = waterlevel;
-//						}
+						
+							message.arg2 = calculatelevel(getfromble);
+							System.out.println("message.arg2= "+message.arg2);
+						
 						i=i+5;
 						message.arg1 = i;
 						if(!(cMessenger == null)){
@@ -179,7 +179,8 @@ public class BLEService extends Service{
 					buffer.append((char)b);
 				}
 				String getdata = buffer.toString();
-				System.out.println("getdata is : "+getdata);
+				getfromble = Double.valueOf(getdata);
+				System.out.println("getdata is : "+getfromble);
 				break;
 			case 2:
 				break;
@@ -192,5 +193,11 @@ public class BLEService extends Service{
 		}	
 		
 	};
-
+//   y=0.1797x^3-9.07x^2+53x+1441
+	public int calculatelevel(double getfromble) {
+		double calculateresult = 0.1797*Math.pow(getfromble, 3)-9.07*Math.pow(getfromble, 2)+53*getfromble+1441;
+		int waterlevel = (int)Math.ceil(calculateresult);
+		System.out.println("calculateresult is = "+calculateresult+"----"+" waterlevel is = "+waterlevel);
+		return waterlevel;
+	}
 }

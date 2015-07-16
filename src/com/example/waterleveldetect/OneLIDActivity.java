@@ -87,8 +87,8 @@ public class OneLIDActivity extends Activity {
 			switch (msg.what) {
 			case BLEService.MSG_SET_VALUE:
 				//更新UI操作
-				//testTextView.setText("receive from service"+msg.arg1);
 				waterlevel = msg.arg1;
+				System.out.println("message.arg2 = "+msg.arg2);
 				myWaterView.setviewparam(3*waterlevel);
 				myWaterView.invalidate();
 				nowwaterlevelnum.setText(waterlevel+"m³");
